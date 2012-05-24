@@ -132,10 +132,8 @@ var browserWarnMessage = function(options){
         
         options: {
             stylePath :     'c/bwarn.css',
-//            headLine:       'Your browser is out of date',
-            headLine:       'Hmmm... Your browser is really sucks!',
-//            introText :     'For best experience, please upgrade to the latest',
-            introText :     'Upgrade it to one of the following:',
+            headLine:       'Your browser is out of date',
+            introText :     'For best experience, please upgrade to the latest',
             outro:          true,
             outroText :     'or [close]proceed at your own risk[/close].',
             closeBtnClass:  'bwarn_window-close'
@@ -259,25 +257,25 @@ var browserWarnMessage = function(options){
 
         insertWindowTemplate: function(){
             
-            var outroText = '';
+            var outroText = '', op = this.options, dl = this.downloadLinks;
             
-            if(this.options.outro === true){
-                outroText = "<p class='outro'>"+this.options.outroText+"</p>";
-                outroText = outroText.replace(/(\[close\])/, "<a class='"+this.options.closeBtnClass+"' href='javascript:void(0);'>");
+            if(op.outro === true){
+                outroText = "<p class='outro'>"+op.outroText+"</p>";
+                outroText = outroText.replace(/(\[close\])/, "<a class='"+op.closeBtnClass+"' href='javascript:void(0);'>");
                 outroText = outroText.replace(/(\[\/close\])/, "</a>");  
             }
             
             var tpl = 
-                "<a class='"+this.options.closeBtnClass+" close-x' href='javascript:void(0);'></a>"+
-                "<h1>"+this.options.headLine+"</h1>"+
-                "<p class='intro'>"+this.options.introText+"</p>"+
+                "<a class='"+op.closeBtnClass+" close-x' href='javascript:void(0);'></a>"+
+                "<h1>"+op.headLine+"</h1>"+
+                "<p class='intro'>"+op.introText+"</p>"+
                 "<table>"+
                     "<tr>"+
-                        "<td><a style='background-position:2px 0' href='"+this.downloadLinks.firefox+"'>Firefox</a></td>"+
-                        "<td><a style='background-position:-106px 0' href='"+this.downloadLinks.chrome+"'>Chrome</a></td>"+
-                        "<td><a style='background-position:-429px 0' href='"+this.downloadLinks.safari+"'>Safari</a></td>"+
-                        "<td><a style='background-position:-317px 0' href='"+this.downloadLinks.opera+"'>Opera</a></td>"+
-                        "<td><a style='background-position:-207px 0' href='"+this.downloadLinks.ie+"'>Internet Explorer</a></td>"+
+                        "<td><a style='background-position:2px 0' href='"+dl.firefox+"'>Firefox</a></td>"+
+                        "<td><a style='background-position:-106px 0' href='"+dl.chrome+"'>Chrome</a></td>"+
+                        "<td><a style='background-position:-429px 0' href='"+dl.safari+"'>Safari</a></td>"+
+                        "<td><a style='background-position:-317px 0' href='"+dl.opera+"'>Opera</a></td>"+
+                        "<td><a style='background-position:-207px 0' href='"+dl.ie+"'>Internet Explorer</a></td>"+
                     "</tr>"+
                 "</table>"+
                 
